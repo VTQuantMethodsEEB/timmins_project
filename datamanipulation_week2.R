@@ -46,10 +46,16 @@ mod1<-glmmTMB(avglogVPD~species + (1|site), data = data,family = gaussian(link =
 summary(mod1)
 
 #try out pivot wider/longer
+data_summary <- data %>%
+  group_by(site,winter_year) %>%
+  summarise(
+    mean_load = mean(lgdL, na.rm = TRUE),
+    mean_temp = mean(avgTEMP, na.rm = TRUE),
+    mean_VPD = mean(avglogVPD, na.rm=TRUE)
+  )
 
-#try making a dataset where each row is a species, and each column is 
-
-data_wide<-data%>%
-  pivot_wider(names_from = state, 
-              values_from = species) 
-
+data_summary_wide <- data_summary %>%
+pivot_wider(
+  names_from = site,
+  values_from = mean_load
+)
