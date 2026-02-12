@@ -16,3 +16,8 @@
 # hierarchical temperature averages. I would like to explore the relationship between
 # vapor pressure deficit, temperature, and different measures of disease.
 
+#week 3
+
+# figure visualization of fungal loads versus tissue invasion
+
+### still need to fix the third figure !!!
