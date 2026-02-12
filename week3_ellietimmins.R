@@ -1,7 +1,9 @@
 
 rm(list=ls())
 
-mylu.working.extrapolated <- read.csv("~/Dropbox/ellie_projects/classes/Kate_class/timmins_project/mylu.working.extrapolated")
+#mylu.working.extrapolated <- read.csv("~/Dropbox/ellie_projects/classes/Kate_class/timmins_project/mylu.working.extrapolated")
+
+read.csv("mylu.working.extrapolated") 
 
 library(tidyverse)
 library(glmmTMB)
