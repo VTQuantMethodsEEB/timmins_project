@@ -18,6 +18,8 @@
 
 #week 3
 
-# figure visualization of fungal loads versus tissue invasion
+# I made three figures:
 
-### still need to fix the third figure !!!
+# Average VPD from early hiber effects on late hiber UV scores
+# Average VPD effects (from heirarichal model) on late hiber UV scores (as a comparison)
+# Average VPD from early hiber effects on late hiber fungal loads

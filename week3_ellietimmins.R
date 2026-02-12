@@ -25,13 +25,13 @@ theme_set(theme_bw() +
               strip.background = element_blank(),
             ))
 
-#####################################
-##### using VPD from early hiber ####
+#########################################
+##### using VPD from early hiber on UV ####
 #####################################
 
 
 uvlatemod<-glmmTMB(uv ~ avg_early_logVPD * lgdL * phase.original + (1|site), data = subset(mylu.working.extrapolated, ysw >= 0 & ysw < 9 & season == "hiber_late"), family = binomial)
-summary(uvlatemod); plot(allEffects(uvlatemod))
+summary(uvlatemod)
 
 mylu.working.avg <- mylu.working.extrapolated %>%  #tissue invasion averages from a survey
   filter(season == "hiber_late"&!is.na(phase.original))%>%
@@ -119,8 +119,8 @@ late_uv_figure <- ggplot() +
 
 late_uv_figure
 
-#####################################
-###### using VPD from late hiber ####
+#########################################
+###### using VPD from late hiber on UV ####
 #####################################
 
 #scale_x_log10 for logging
@@ -222,15 +222,14 @@ late_uv_figure
 ###### using VPD from early hiber on late fungal loads ############
 ###################################################################
 
-#scale_x_log10 for logging
-
 mylu.working.extrapolated$phase.original = as.factor(mylu.working.extrapolated$phase.original)
 mylu.working.extrapolated$phase.original = relevel(mylu.working.extrapolated$phase.original, ref="invasion")
 
 latefungalloads<-glmmTMB(lgdL ~ avg_early_logVPD * avgTEMP * phase.original +  (1|site),data=subset(mylu.working.extrapolated, ysw<9 & ysw>-1& season=="hiber_late"),family = gaussian(link = "identity"))
-summary(latefungalloads); plot(allEffects(latefungalloads))
+summary(latefungalloads)
 #VPD and temp both significant in invasion phase, marginally sig in established phase
 
+#### with temp on x axis #####
 
 mylu.working.avg <- mylu.working.extrapolated %>%  #tissue invasion averages from a survey
   filter(season == "hiber_late"&!is.na(phase.original))%>%
@@ -262,20 +261,6 @@ nd4e <- mylu.working.extrapolated %>%
   ungroup()
 nd4e$phat <- predict(latefungalloads, newdata = nd4e, type = "response", re.form = ~0)
 
-# # Create bins for avglogVPD in nd4e
-# nd4e <- nd4e %>%
-#   mutate(
-#     VPD_bin = cut(avglogVPD,
-#                   breaks = quantile(avglogVPD, probs = seq(0,1, length.out = 4), na.rm = TRUE),
-#                   include.lowest = TRUE,
-#                   labels = c("Wet", "Damp", "Dry"))
-#   )
-# 
-# # Aggregate predictions per bin for smooth lines
-# nd4e_bin <- nd4e %>%
-#   group_by(VPD_bin, avgTEMP, phase.original) %>%
-#   summarise(phat = mean(phat), .groups = "drop") 
-
 nd4e <- nd4e %>%
   group_by(phase.original) %>%
   mutate(
@@ -291,9 +276,7 @@ nd4e_bin <- nd4e %>%
   group_by(phase.original, VPD_bin, avgTEMP) %>%
   summarise(phat = mean(phat), .groups = "drop")
 
-# Plot
 late_fungalload_figure <- ggplot() +
-  # Points: observed averages
   geom_point(
     data = mylu.working.avg,
     aes(
@@ -308,7 +291,6 @@ late_fungalload_figure <- ggplot() +
   scale_size_continuous(name = "Number of Bats Sampled") +
   guides(color = "none") +
   new_scale_color() +
-  # Lines: predicted phat by VPD bin
   geom_line(
     data = nd4e_bin,
     aes(
@@ -330,5 +312,4 @@ late_fungalload_figure <- ggplot() +
   ) 
 
 late_fungalload_figure
-
 
