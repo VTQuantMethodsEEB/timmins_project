@@ -23,3 +23,5 @@
 # Average VPD from early hiber effects on late hiber UV scores
 # Average VPD effects (from heirarichal model) on late hiber UV scores (as a comparison)
 # Average VPD from early hiber effects on late hiber fungal loads
+
+#Data: mylu.working.extrapolated
