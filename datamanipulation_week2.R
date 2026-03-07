@@ -3,6 +3,7 @@ library(dplyr)
 library(glmmTMB)
 
 data<-read.csv("~/Dropbox/ellie_projects/data/merged.working.csv")
+#this is reading in from dropbox
 str(data)
 head(data)
 # Experiment with “group by” in dplyr to do some calculation.
