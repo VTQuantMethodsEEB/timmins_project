@@ -1,27 +1,44 @@
 # timmins_project
-# This project is used to determine how vapor pressure deficit impacts fungal loads,
-#tissue invasion, and survival of little brown bats with white-nose syndrome over time.
 
-#I am making changes to test commit and push
+This project is used to determine how vapor pressure deficit impacts fungal loads,
 
-#week 2
+tissue invasion, and survival of little brown bats with white-nose syndrome over time.
 
-#upload paragraph from first assignment:
+I am making changes to test commit and push
 
-#Maybe I can use the time this semester to explore VPD in other species?
+# week 2
 
-# This dataset is a collection of infection data and climate data accumulated over the past
-# decade or so. My main variables of interest are lgdL or fungal loads, UV scores or
-# tissue invasion, logVPD or log transformed vapor pressure deficit, and avgTEMP or
-# hierarchical temperature averages. I would like to explore the relationship between
-# vapor pressure deficit, temperature, and different measures of disease.
+upload paragraph from first assignment:
 
-#week 3
+Maybe I can use the time this semester to explore VPD in other species?
 
-# I made three figures:
+This dataset is a collection of infection data and climate data accumulated over the past
 
-# Average VPD from early hiber effects on late hiber UV scores
-# Average VPD effects (from heirarichal model) on late hiber UV scores (as a comparison)
-# Average VPD from early hiber effects on late hiber fungal loads
+decade or so. My main variables of interest are lgdL or fungal loads, UV scores or
 
-#Data: mylu.working.extrapolated
+tissue invasion, logVPD or log transformed vapor pressure deficit, and avgTEMP or
+
+hierarchical temperature averages. I would like to explore the relationship between
+
+vapor pressure deficit, temperature, and different measures of disease.
+
+# week 3
+
+I made three figures:
+
+Average VPD from early hiber effects on late hiber UV scores
+
+Average VPD effects (from heirarichal model) on late hiber UV scores (as a comparison)
+
+Average VPD from early hiber effects on late hiber fungal loads
+
+Data: mylu.working.extrapolated
+
+# week 5
+
+code: week5_tests
+
+data: mylu.working.extrapolated
+
+I completed a permutation test to assess if avglogVPD is different between WI and NY.
+I completed a shapiro-wilks test to assess if avglogVPD is normally distributed.
