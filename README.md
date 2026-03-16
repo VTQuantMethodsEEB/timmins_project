@@ -2,24 +2,43 @@
 
 This project is used to determine how vapor pressure deficit impacts fungal loads,
 
-tissue invasion, and survival of little brown bats with white-nose syndrome over time. This dataset is a collection of infection data and climate data accumulated over the past decade or so. My main variables of interest are lgdL or fungal loads, UV scores or tissue invasion, logVPD or log transformed vapor pressure deficit, and avgTEMP or hierarchical temperature averages. I would like to explore the relationship between vapor pressure deficit, temperature, and different measures of disease.
+tissue invasion, and survival of little brown bats with white-nose syndrome over time.
+
+I am making changes to test commit and push
 
 # week 2
 
--   code:
--   data:
+upload paragraph from first assignment:
 
-This week I did this for this reason. 
+Maybe I can use the time this semester to explore VPD in other species?
+
+This dataset is a collection of infection data and climate data accumulated over the past
+
+decade or so. My main variables of interest are lgdL or fungal loads, UV scores or
+
+tissue invasion, logVPD or log transformed vapor pressure deficit, and avgTEMP or
+
+hierarchical temperature averages. I would like to explore the relationship between
+
+vapor pressure deficit, temperature, and different measures of disease.
 
 # week 3
 
--   Data: mylu.working.extrapolated
+I made three figures:
 
--   code:
+Average VPD from early hiber effects on late hiber UV scores
 
-This week I did this for this reason.
--   I made three figures:
+Average VPD effects (from heirarichal model) on late hiber UV scores (as a comparison)
 
-(1) Average VPD from early hiber effects on late hiber UV scores
-(2) Average VPD effects (from heirarichal model) on late hiber UV scores (as a comparison)
-(3) Average VPD from early hiber effects on late hiber fungal loads
+Average VPD from early hiber effects on late hiber fungal loads
+
+Data: mylu.working.extrapolated
+
+# week 5
+
+code: week5_tests
+
+data: mylu.working.extrapolated
+
+I completed a permutation test to assess if avglogVPD is different between WI and NY.
+I completed a shapiro-wilks test to assess if avglogVPD is normally distributed.
