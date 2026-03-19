@@ -42,3 +42,18 @@ data: mylu.working.extrapolated
 
 I completed a permutation test to assess if avglogVPD is different between WI and NY.
 I completed a shapiro-wilks test to assess if avglogVPD is normally distributed.
+
+
+# week 7 & 8
+
+Week 7
+
+code: week7_lm
+
+data: mylu.working.extrapolated
+
+I created a linear model with my predictor variable being VPD values from 
+early hibernation, and my y variable being fungal loads in late hibernation. I ran
+model diagnostics on this and created a figure. I also looked at this in an 
+early hibernation model. Conclusions seem to be that nothing is normal and
+I may need to transform VPD differently.
