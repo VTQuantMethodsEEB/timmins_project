@@ -1,7 +1,9 @@
 rm(list = ls())
-
+library(emmeans)
+library(effects)
 library(performance)
 library(dplyr)
+library(ggplot2)
 mylu.working.extrapolated<-read.csv("mylu.working.extrapolated")
 
 mylu.working.extrapolated$phase.original = as.factor(mylu.working.extrapolated$phase.original)
@@ -105,3 +107,71 @@ hist(mylu.working.extrapolated$log.r.avgVPD) #still looks ugly :(
 ####### Part 2 #######
 ######################
 
+# HYPOTHESIS
+
+#Vapor pressure deficit (VPD) in early hibernation will significantly impact 
+#fungal loads in late hibernation. This effect of early VPD on late fungal 
+#loads will change over time, which is represented by invasion phase.
+
+# ADDITIVE MODEL - interpretations in readme
+
+# This model is assessing how early VPD and phase of invasion impact log transformed
+# fungal loads in late hibernation
+
+mylu.working.extrapolated<-mylu.working.extrapolated%>%
+  filter(season=="hiber_late" & !is.na(phase.original))
+
+mylu.working.extrapolated$phase.original = relevel(mylu.working.extrapolated$phase.original, ref="established")
+
+mod2.1<-lm(lgdL~avg_early_VPD+phase.original, data = subset(mylu.working.extrapolated))
+summary(mod2.1)
+
+plot(allEffects(mod2.1))
+
+# INTERACTIVE MODEL
+
+# This model is assessing how early VPD and phase of invasion impact log transformed
+# fungal loads in late hibernation. The interactive model additionally investigates
+# how the impact of early VPD changes depending on if you are assessing this relationship
+# in the invasion versus established phase of disease arrival. 
+
+mylu.working.extrapolated$phase.original = relevel(mylu.working.extrapolated$phase.original, ref="established")
+
+mod2.2<-lm(lgdL~avg_early_VPD*phase.original, data = subset(mylu.working.extrapolated))
+summary(mod2.2)
+
+emmeans(mod2.2,specs=~avg_early_VPD*phase.original)
+
+plot(allEffects(mod2.2))
+
+hist(resid(mod2.1))
+hist(resid(mod2.2)) #both are pretty badly left skewed
+
+# PLOT
+
+# ADDITIVE
+
+df <- with(mylu.working.extrapolated,
+           expand.grid(phase.original=unique(phase.original),
+                       avg_early_VPD=unique(avg_early_VPD)))
+
+df$lgdL <- predict(mod2.1,newdata=df)
+
+
+plot1 = ggplot(df,aes(x=avg_early_VPD,y=lgdL,colour=phase.original))+
+  geom_point(data=mylu.working.extrapolated, aes(x=avg_early_VPD,y=lgdL,colour = phase.original))+ #add the observed data to the plot
+  geom_point(color="red")+ #plot the prediction
+  geom_line(aes(group=phase.original)) #draw lines b/t predictions, group them by light conditions
+plot1
+
+# INTERACTIVE
+
+df$lgdL <- predict(mod2.2,newdata=df)
+
+
+plot2 = ggplot(df,aes(x=avg_early_VPD,y=lgdL,colour=phase.original))+
+  geom_point(data=mylu.working.extrapolated, aes(x=avg_early_VPD,y=lgdL,colour = phase.original))+ #add the observed data to the plot
+  geom_point(color="red")+ #plot the prediction
+  geom_line(aes(group=phase.original)) #draw lines b/t predictions, group them by light conditions
+
+plot2

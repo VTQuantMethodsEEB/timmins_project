@@ -57,3 +57,29 @@ early hibernation, and my y variable being fungal loads in late hibernation. I r
 model diagnostics on this and created a figure. I also looked at this in an 
 early hibernation model. Conclusions seem to be that nothing is normal and
 I may need to transform VPD differently.
+
+Week 8
+
+code: week7_lm
+
+data: mylu.working.extrapolated
+
+Additive model interpretation:
+In both the established and invasion phases, early hibernation VPD has a statistically significant 
+negative impact on fungal loads in late hibernation. In other words, drier early hibernation
+conditions are correlated with lower fungal loads in late hibernation.
+
+Fungal loads are not statistically different in the invasion versus established phase,
+although interestingly the trend is that fungal loads are higher in the established phase.
+This could be due to survival bias.
+
+Interactive model interpretation:
+In both the established and invasion phases, early hibernation VPD has a statistically 
+significant negative impact on fungal loads in late hibernation. 
+This trend is much steeper in the invasion phase, and the difference between 
+the trend in established versus invasion phase is statistically significant. 
+There is significantly higher fungal loads in invasion phase 
+than in the established phase at low values of VPD.
+
+
+
