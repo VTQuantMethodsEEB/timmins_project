@@ -81,5 +81,34 @@ the trend in established versus invasion phase is statistically significant.
 There is significantly higher fungal loads in invasion phase 
 than in the established phase at low values of VPD.
 
+# Week 10/11
+
+code: TIMMINS_week10_glm_result
+
+data: mylu.working.imputated
+
+Results section:
+
+In the epidemic phase of the pathogen, we found that fungal loads are 
+significantly higher in warmer environmental temperatures in late hibernation 
+(environmental temperature coefficient β = 0.16429 ± 0.05384 SE, p = 0.00233).
+
+In the epidemic phase of the pathogen, we found that fungal loads are 
+significantly lower in dry environmental temperatures in late hibernation 
+(environmental vapor pressure deficit coefficient β = -0.40213 ± 0.14640 SE, p = 0.00612).
+
+The interaction between environmental temperature and vapor pressure deficit has a
+statistically unclear effect on fungal loads, although the trend is positive
+(interaction coefficient β = 0.04504  ± 0.02924 SE, p = 0.12380). 
 
 
+Model comparisons:
+
+The best fit model has VPD and phase as an interactive effect to predict fourth
+root transformed fungal loads.
+
+According to maximum likelihood tests, residual deviance is smallest in the model
+with VPD and phase as an interactive effect.
+
+According to AIC, the model with VPD and phase as an interactive effect has the
+smallest amount of prediction error.
