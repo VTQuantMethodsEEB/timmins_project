@@ -3,7 +3,8 @@ rm(list=ls())
 
 #mylu.working.extrapolated <- read.csv("~/Dropbox/ellie_projects/classes/Kate_class/timmins_project/mylu.working.extrapolated")
 
-read.csv("mylu.working.extrapolated") 
+#need to assign this to something!
+mylu.working.extrapolated = read.csv("mylu.working.extrapolated") 
 
 library(tidyverse)
 library(glmmTMB)
@@ -314,4 +315,4 @@ late_fungalload_figure <- ggplot() +
   ) 
 
 late_fungalload_figure
-
+#this is a weird plot that is inconsistent with previous work. I don't think temp should ever go down
