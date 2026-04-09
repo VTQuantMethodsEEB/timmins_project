@@ -7,6 +7,8 @@ library(ggplot2)
 library(ggnewscale)
 library(glmmTMB)
 library(DHARMa)
+library(AICcmodavg)
+
 mylu.working.imputated <- read.csv("mylu.working.imputated")
 
 #HYPOTHESIS
@@ -105,5 +107,57 @@ late_fungalload_figure <- ggplot() +
 late_fungalload_figure
 
 
+#### week 11 ####
+
+########################################
+########### liklihood ratio test ##########
 
 
+#subsetting to make each model have same number of observations
+mylu.working.imputated.subset<-mylu.working.imputated%>%
+  filter(!(is.na(avglogVPD)))
+
+mylu.working.imputated.subset<-mylu.working.imputated.subset%>%
+  filter(!(is.na(phase.original)))
+
+mylu.working.imputated.subset<-mylu.working.imputated.subset%>%
+  filter(!(is.na(adj_gdL)))
+
+
+m1= glm(adj_gdL ~ avglogVPD,
+                     data=subset(mylu.working.imputated.subset, ysw<9 & ysw>-1& 
+                                   season=="hiber_late"&gd==1),
+                     family = Gamma(link="log"))
+
+
+m2= glm(adj_gdL ~ avglogVPD+phase.original,
+                     data=subset(mylu.working.imputated.subset, ysw<9 & ysw>-1& 
+                                   season=="hiber_late"&gd==1),
+                     family = Gamma(link="log"))
+
+m3= glm(adj_gdL ~ avglogVPD*phase.original,
+        data=subset(mylu.working.imputated.subset, ysw<9 & ysw>-1& 
+                      season=="hiber_late"&gd==1),
+        family = Gamma(link="log"))
+
+m4= glm(adj_gdL ~ 1,
+        data=subset(mylu.working.imputated.subset, ysw<9 & ysw>-1& 
+                      season=="hiber_late"&gd==1),
+        family = Gamma(link="log"))
+
+anova(m1,m2) #very sig improves fit. Referencing residual deviance, model is slightly better with phase
+
+anova(m1,m3) #very sig, model is slightly better with phase
+
+anova(m1,m2,m3,m4) # sig, best model is interactive VPD and phase
+anova(m2,m3) #sig, using interactive slightly better
+
+anova(m2,m3, test = "LRT") #sig, using interactive slightly better, with one more df
+
+########################################
+########### AIC comparions ##########
+
+AIC(m1,m2,m3,m4)
+
+#m3 interactive effect between VPD and phase has the lowest AIC score,
+#meaning it is the best fit model by a difference of around 3.
