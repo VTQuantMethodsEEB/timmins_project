@@ -6,7 +6,7 @@ data1<-read.csv("mylu.working.extrapolated")
 #I wanted to do this for comparing species, but the data file was too big to upload!!!
 
 unique(data$state)
-
+#this doesn't run
 
 ##Code corresponding to LE5 - Statistical Tests
 
@@ -52,7 +52,7 @@ data<-data1%>%
 
 #use jar example to illustrate sampling procedure
 res <- NA ## set aside space for results
-
+obs = mean(data$avglogVPD[data$state=="WI"]) - mean(data$avglogVPD[data$state=="NY"])
 
 for (i in 1:1000) {
   
@@ -61,13 +61,13 @@ for (i in 1:1000) {
   WIboot <- VPDboot[1:length(data$state[data$state=="WI"])] #this says assign the first six colonies to forest
   NYboot <- VPDboot[(length(data$state[data$state=="WI"])+1):length(data$state)] #this says assign the rest of the observations to field
 
-  res[i] <- mean(NYboot) - mean(WIboot) #random residuals 
+  res[i] <- mean(WIboot) - mean(NYboot) #KL: this needed to be reversed
   
 }
 #what is our observed mean difference?
-obs <- mean(data$avglogVPD[data$state=="NY"]) -
-  mean(data$avglogVPD[data$state=="WI"])
-obs #observed residuals
+#obs <- mean(data$avglogVPD[data$state=="NY"]) -
+#  mean(data$avglogVPD[data$state=="WI"])
+obs #observed residuals _ KL this is not a residual
 
 range(res)
 
@@ -77,8 +77,8 @@ abline(v=obs,col="red")
 ##so how do we get our p-value?
 res[res>=obs]
 length(res[res>=obs])
-997/1000
-#same as 
+1/1000
+#small p-value! 
 mean(res>=obs)
 
 #maybe need to do two-tailed test?
@@ -109,3 +109,4 @@ swt<-shapiro.test(data$avglogVPD)
 swt
 
 #this data is not normal!! :(
+
