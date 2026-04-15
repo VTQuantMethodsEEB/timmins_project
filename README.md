@@ -89,17 +89,18 @@ data: mylu.working.imputated
 
 Results section:
 
-In the epidemic phase of the pathogen, we found that fungal loads are 
-significantly higher in warmer environmental temperatures in late hibernation 
+In the epidemic phase of the pathogen, late hibernation fungal loads are 
+significantly higher in warmer environmental temperatures 
 (environmental temperature coefficient β = 0.16429 ± 0.05384 SE, p = 0.00233).
-
-In the epidemic phase of the pathogen, we found that fungal loads are 
-significantly lower in dry environmental temperatures in late hibernation 
-(environmental vapor pressure deficit coefficient β = -0.40213 ± 0.14640 SE, p = 0.00612).
+In cold environments, late hibernation fungal loads significantly decrease in 
+dry environments (environmental vapor pressure deficit coefficient β = -0.40213 ± 0.14640 SE, p = 0.00612).
 
 The interaction between environmental temperature and vapor pressure deficit has a
-statistically unclear effect on fungal loads, although the trend is positive
-(interaction coefficient β = 0.04504  ± 0.02924 SE, p = 0.12380). 
+statistically unclear effect on fungal loads. The trend suggests that as
+conditions get warmer, the negative effect of vapor pressure deficit becomes weaker
+(interaction coefficient β = 0.04504  ± 0.02924 SE, p = 0.12380). This dataset includes
+few dry and warm sites compared to dry and cold sites such that the effects of 
+vapor pressure deficit may be indeterminate in warm and dry environments.
 
 
 Model comparisons:
