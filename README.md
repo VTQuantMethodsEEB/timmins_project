@@ -113,3 +113,21 @@ with VPD and phase as an interactive effect.
 
 According to AIC, the model with VPD and phase as an interactive effect has the
 smallest amount of prediction error.
+
+
+# Week 12
+
+code: TIMMINS_week12_mixedmodels.R
+
+data: mylu.working.extrapolated
+
+I made two models/figures:
+
+Average vapor pressure deficit and average temperature 
+effects on late hiber fungal loads.
+
+Average vapor pressure deficit and fungal loads 
+effects on late hiber tissue invasion.
+
+
+
