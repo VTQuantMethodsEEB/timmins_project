@@ -204,3 +204,4 @@ late_fungalload_figure <- ggplot() +
   scale_y_continuous(limits = c(0, 1.1))
 
 late_fungalload_figure
+
