@@ -129,5 +129,25 @@ effects on late hiber fungal loads.
 Average vapor pressure deficit and fungal loads 
 effects on late hiber tissue invasion.
 
+# Final Project
+
+code: TIMMINS_Final_project
+
+data:mylu.working.imputated, recap
+
+I start with producing three figures:
+
+Average vapor pressure deficit and average temperature 
+effects on late hiber fungal loads.
+
+Average vapor pressure deficit and fungal loads 
+effects on late hiber tissue invasion.
+
+Average vapor pressure deficit and early hibernation fungal load effects
+on recapture probability.
+
+I then show my model selection process for selecting the above figures. I used
+AIC comparisons using subsetted data to achieve the same number of observations
+for each compared model.
 
 
